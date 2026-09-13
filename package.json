@@ -1,0 +1,9 @@
+{
+  "name": "sweet-candle-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SWEET CANDLE storefront with Netlify serverless admin publishing",
+  "dependencies": {
+    "@netlify/blobs": "^9.1.0"
+  }
+}
