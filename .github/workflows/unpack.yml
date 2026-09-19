@@ -1,0 +1,53 @@
+name: Extract SWEETCANDLE.CRAFT
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "SWEETCANDLE_CRAFT_FINAL_READY.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract project
+        run: |
+          rm -rf unpacked
+          mkdir unpacked
+
+          unzip -o "SWEETCANDLE_CRAFT_FINAL_READY.zip" -d unpacked
+
+          if [ "$(find unpacked -mindepth 1 -maxdepth 1 -type d | wc -l)" = "1" ] && \
+             [ "$(find unpacked -mindepth 1 -maxdepth 1 -type f | wc -l)" = "0" ]; then
+            SOURCE=$(find unpacked -mindepth 1 -maxdepth 1 -type d | head -1)
+          else
+            SOURCE="unpacked"
+          fi
+
+          rsync -a \
+            --exclude=".github/" \
+            "$SOURCE"/ ./
+
+          rm -rf unpacked
+          rm -f "SWEETCANDLE_CRAFT_FINAL_READY.zip"
+
+      - name: Save changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Deploy SWEETCANDLE.CRAFT final version"
+            git push
+          fi
