@@ -1,1 +1,127 @@
-index_2.html.  
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SWEET CANDLE CRAFT — Production Admin</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#f4efe7;--surface:#fffdf9;--surface2:#f8f3eb;--ink:#2c241e;--muted:#918579;--line:#e8ded1;--gold:#b68b56;--gold2:#d5b27e;--dark:#29221d;--green:#718068;--red:#a85f55;--shadow:0 22px 65px rgba(54,39,25,.10);--r:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;overflow-x:hidden;min-width:0;background:radial-gradient(circle at 80% 0,#fffaf2 0,#f4efe7 40%,#eee6db 100%);color:var(--ink);font-family:Inter,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.shell{display:flex;min-height:100vh}
+.side{position:fixed;right:0;top:0;bottom:0;width:285px;background:linear-gradient(180deg,#302721,#211b17);color:#fff;padding:25px 18px;z-index:20;overflow:auto}
+.brand{padding:8px 12px 25px;border-bottom:1px solid #ffffff14;margin-bottom:18px}.brand small{color:#c9aa7b;letter-spacing:4px;font-size:9px}.brand h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:29px;letter-spacing:1px;margin:6px 0 0}.brand p{color:#a99c90;font-size:11px;margin:4px 0}
+.menu-title{color:#8d8177;font-size:10px;letter-spacing:2px;padding:12px}
+.nav button{display:flex;align-items:center;gap:12px;width:100%;border:0;background:transparent;color:#cfc4b9;padding:13px 14px;border-radius:14px;text-align:right;margin:3px 0}.nav button i{font-style:normal;width:25px;text-align:center;color:#c6a273}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#ffffff12,#ffffff08);color:#fff}.nav button.active{box-shadow:inset -3px 0 var(--gold)}
+.side-foot{margin-top:25px;padding:16px;border:1px solid #ffffff10;border-radius:17px;background:#ffffff06;color:#aaa097;font-size:11px;line-height:1.8}
+.main{width:calc(100% - 285px);margin-right:285px;padding:27px 32px 50px;max-width:1700px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.welcome h1{font:700 39px "Cormorant Garamond",Georgia,serif;margin:0}.welcome p{margin:3px 0;color:var(--muted);font-size:12px}
+.top-actions{display:flex;gap:9px;align-items:center}.pill{background:#fffdf9;border:1px solid var(--line);padding:10px 13px;border-radius:13px;color:var(--muted);font-size:12px}
+.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#d5b27e,#8b6747);color:#fff;font-weight:700}
+.btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:13px;padding:11px 15px;transition:.2s}.btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px #0000000b}.btn.primary{background:var(--dark);color:#fff;border-color:var(--dark)}.btn.gold{background:linear-gradient(135deg,#b88d57,#8f673f);color:#fff;border:0}.btn.red{color:var(--red)}
+.view{display:none}.view.active{display:block;animation:fade .22s ease}@keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(125deg,#312720,#584331);color:#fff;border-radius:28px;padding:27px 30px;position:relative;overflow:hidden;box-shadow:var(--shadow);margin-bottom:18px}.hero:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #d7b68133;border-radius:50%;left:-100px;top:-190px}.hero small{color:#d8b988;letter-spacing:3px}.hero h2{font:600 37px "Cormorant Garamond",Georgia,serif;margin:8px 0}.hero p{color:#d5cbc1;font-size:13px;margin:0;max-width:620px}.hero .mini{position:absolute;left:30px;top:30px;text-align:left;color:#d7c5ad;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.stat{background:rgba(255,253,249,.86);border:1px solid var(--line);border-radius:21px;padding:19px;box-shadow:var(--shadow)}.stat .row{display:flex;justify-content:space-between;align-items:center}.ico{width:43px;height:43px;border-radius:14px;background:#f1e6d7;color:#a47b4e;display:grid;place-items:center;font-size:18px}.stat strong{display:block;font-size:28px;margin:13px 0 3px}.stat span{font-size:11px;color:var(--muted)}
+.columns{display:grid;grid-template-columns:1.45fr 1fr;gap:17px;margin-top:17px}.card{background:rgba(255,253,249,.9);border:1px solid var(--line);border-radius:var(--r);padding:21px;box-shadow:var(--shadow)}.head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.head h3{font:600 24px "Cormorant Garamond",Georgia,serif;margin:0}.head p{font-size:11px;color:var(--muted);margin:3px 0}
+.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:650px}.table th,.table td{padding:13px 9px;border-bottom:1px solid var(--line);font-size:12px;text-align:right;vertical-align:middle}.table th{color:var(--muted);font-weight:500}.prod{display:flex;align-items:center;gap:10px}.prod img{width:46px;height:46px;border-radius:13px;object-fit:cover;background:#eee}.tag{display:inline-flex;padding:5px 9px;border-radius:20px;font-size:10px;background:#eee7dd;color:#6e6257}.tag.green{background:#e6eee3;color:#53664d}.tag.red{background:#f4e1de;color:#8d5048}.tag.gold{background:#f3e6d1;color:#8d673f}
+.progress{height:7px;background:#eee7dd;border-radius:20px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#8c6948,#d0a96f);border-radius:20px}.stock-item{padding:12px 0;border-bottom:1px solid var(--line)}.stock-item:last-child{border:0}.stock-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}
+.section-title{font:600 29px "Cormorant Garamond",Georgia,serif;margin:0}.sub{font-size:11px;color:var(--muted);margin-top:4px}.toolbar{display:flex;gap:9px;align-items:center;justify-content:space-between;margin-bottom:15px}.search{width:250px;border:1px solid var(--line);background:var(--surface);padding:11px 13px;border-radius:12px;outline:0}.filters{display:flex;gap:7px}.filters button{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 11px;font-size:11px}.filters button.active{background:var(--dark);color:#fff}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field label{display:block;color:var(--muted);font-size:11px;margin:0 0 7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#fff;padding:12px 13px;border-radius:12px;outline:none;color:var(--ink)}.field textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.modal{display:none;position:fixed;inset:0;background:#1e1713a8;z-index:50;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalbox{width:min(760px,100%);max-height:91vh;overflow:auto;background:var(--surface);border-radius:26px;padding:24px;box-shadow:0 40px 120px #0005}.close{border:0;background:#eee5da;width:36px;height:36px;border-radius:50%;font-size:20px}.empty{text-align:center;color:var(--muted);padding:38px}.toast{position:fixed;left:25px;bottom:25px;background:#2d251f;color:#fff;padding:13px 17px;border-radius:13px;box-shadow:0 15px 40px #0004;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s;z-index:90;font-size:12px}.toast.show{opacity:1;transform:none}
+@media(max-width:1050px){.side{width:82px;padding:20px 9px}.brand h2{font-size:15px}.brand p,.brand small,.nav button span,.menu-title,.side-foot{display:none}.nav button{justify-content:center;padding:14px}.main{width:calc(100% - 82px);max-width:calc(100% - 82px);margin-right:82px;padding:20px;min-width:0}.stats{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}}
+@media(max-width:700px){.main{padding:14px}.topbar{align-items:flex-start}.top-actions .pill{display:none}.welcome h1{font-size:31px}.hero h2{font-size:30px}.hero .mini{display:none}.stats{grid-template-columns:1fr 1fr;gap:9px}.stat{padding:14px}.stat strong{font-size:23px}.formgrid{grid-template-columns:1fr}.full{grid-column:auto}.toolbar{align-items:stretch;flex-direction:column}.search{width:100%}.filters{overflow:auto}.columns{gap:10px}}
+.upload-box{position:relative;border:1.5px dashed #cdbb9d;border-radius:18px;background:#fbf8f1;min-height:110px;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}.upload-box input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.upload-hint{text-align:center;color:#765f48;font-size:14px;pointer-events:none}.upload-hint b{display:block;font-size:16px}.upload-hint span{display:block;margin-top:6px;font-size:11px;color:#9b8d7d}.image-preview{display:none;margin-top:10px;border:1px solid #e5dac9;border-radius:15px;overflow:hidden}.image-preview.show{display:block}.image-preview img{display:block;width:100%;max-height:220px;object-fit:cover}.image-preview .preview-name{padding:8px 12px;font-size:11px;background:#fffaf3;color:#786b5d}</style><style id="responsive-fix">
+html,body{width:100%;max-width:100%;margin:0;padding:0;overflow-x:hidden}body{min-width:0!important}
+*{box-sizing:border-box}.app,.main,.content,.page,.panel,.dashboard,.wrap{max-width:100vw;min-width:0;overflow-x:hidden}
+img{max-width:100%;height:auto}.table-wrap,.table-responsive{width:100%;max-width:100%;overflow-x:auto}
+input,select,textarea,button{max-width:100%;box-sizing:border-box}
+@media(max-width:900px){.sidebar{width:230px!important}.main{margin-left:230px!important;width:calc(100% - 230px)!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:700px){.sidebar{position:fixed!important;left:-260px!important;z-index:1000}.main{margin-left:0!important;width:100%!important;padding:16px!important}.grid,.cards,.stats,.kpis{grid-template-columns:1fr 1fr!important}.header,.topbar{gap:8px;flex-wrap:wrap}.panel{padding:16px!important}.table-wrap{overflow-x:auto}.table-wrap table{min-width:650px}.form-grid{grid-template-columns:1fr!important}}
+@media(max-width:480px){.main{padding:12px!important}.grid,.cards,.stats,.kpis{grid-template-columns:1fr!important}.stat,.card{min-width:0!important}.header h1{font-size:24px!important}}
+</style>
+<style id="supabase-auth-css">#scc-auth{position:fixed;inset:0;background:radial-gradient(circle at 70% 20%,#6a513d,#211a16 60%);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}#scc-auth .box{width:min(420px,100%);background:#fffdf9;border-radius:24px;padding:28px;box-shadow:0 30px 100px #0007;text-align:right}#scc-auth h2{font:600 32px Georgia;margin:0 0 8px}#scc-auth p{color:#918579;font-size:12px;line-height:1.8}#scc-auth input{width:100%;padding:13px;border:1px solid #e8ded1;border-radius:12px;margin:6px 0 10px;box-sizing:border-box}#scc-auth button{width:100%;padding:13px;border:0;border-radius:12px;background:#2c241e;color:#fff;margin-top:7px}#scc-auth .err{color:#a85f55;font-size:11px;min-height:18px}</style></head>
+<body><div id="scc-auth"><div class="box"><div style="font-size:10px;letter-spacing:3px;color:#b68b56">SWEET CANDLE CRAFT</div><h2>دخول الإدارة</h2><p>لوحة الإدارة محمية بواسطة Supabase Auth.</p><input id="scc-email" type="email" placeholder="البريد الإلكتروني"><input id="scc-pass" type="password" placeholder="كلمة المرور"><div id="scc-auth-err" class="err"></div><button id="scc-login">تسجيل الدخول</button></div></div>
+<div class="shell">
+<aside class="side">
+ <div class="brand"><small>SWEET CANDLE</small><h2>CRAFT</h2><p>PRODUCTION ADMIN • 2026</p></div>
+ <div class="menu-title">MANAGEMENT</div>
+ <div class="nav">
+  <button class="active" data-v="dashboard"><i>⌂</i><span>نظرة عامة</span></button>
+  <button data-v="products"><i>◈</i><span>المنتجات</span></button>
+  <button data-v="categories"><i>◇</i><span>التصنيفات</span></button>
+  <button data-v="orders"><i>▣</i><span>الطلبات</span></button>
+  <button data-v="customers"><i>♙</i><span>العملاء</span></button>
+  <button data-v="payments"><i>◌</i><span>الدفع والتحصيل</span></button>
+  <button data-v="settings"><i>⚙</i><span>الإعدادات</span></button>
+ </div>
+ <div class="side-foot">لوحة إدارة مرتبطة بالمتجر.<br>البيانات متزامنة عبر Supabase.</div>
+</aside>
+
+<main class="main">
+ <header class="topbar">
+  <div class="welcome"><h1 id="pageTitle">لوحة القيادة</h1><p>إدارة SWEET CANDLE CRAFT بكل تفاصيلها</p></div>
+  <div class="top-actions"><button class="pill" id="currencyToggle" onclick="toggleCurrency()">$ USD</button><button class="pill" id="languageToggle" onclick="toggleLanguage()">EN</button><div class="pill">● المتجر يعمل</div><div class="pill" id="clock">--:--</div><div class="avatar">SC</div></div>
+ </header>
+
+ <section id="dashboard" class="view active">
+  <div class="hero"><small>WELCOME TO YOUR PRIVATE DASHBOARD</small><h2>كل تفاصيل متجرك في مكان واحد.</h2><p>المنتجات، المخزون، الطلبات، العملاء، المدفوعات وسعر الصرف — بتجربة إدارة مصممة بروح العلامة الفاخرة.</p><div class="mini">SWEET CANDLE CRAFT<br>HANDMADE • ELEGANT • UNIQUE</div></div>
+  <div class="stats">
+   <div class="stat"><div class="row"><span>المنتجات النشطة</span><div class="ico">◈</div></div><strong id="sProducts">0</strong><span>متاح للبيع حالياً</span></div>
+   <div class="stat"><div class="row"><span>الطلبات</span><div class="ico">▣</div></div><strong id="sOrders">0</strong><span>كل الطلبات المسجلة</span></div>
+   <div class="stat"><div class="row"><span>العملاء</span><div class="ico">♙</div></div><strong id="sCustomers">0</strong><span>حسابات العملاء</span></div>
+   <div class="stat"><div class="row"><span>المبيعات</span><div class="ico">$</div></div><strong id="sSales">$0</strong><span>قيمة الطلبات بالدولار</span></div>
+  </div>
+  <div class="columns">
+   <div class="card"><div class="head"><div><h3>آخر الطلبات</h3><p>متابعة سريعة لأحدث عمليات الشراء</p></div><button class="btn" onclick="go('orders')">عرض الكل</button></div><div id="recent"></div></div>
+   <div class="card"><div class="head"><div><h3>المخزون</h3><p>تنبيه تلقائي للمنتجات القليلة</p></div><button class="btn gold" onclick="openProduct()">+ منتج</button></div><div id="stock"></div></div>
+  </div>
+ </section>
+
+ <section id="products" class="view">
+  <div class="card"><div class="toolbar"><div><h2 class="section-title">المنتجات</h2><div class="sub">إدارة كاملة للمنتجات والأسعار والمخزون</div></div><div style="display:flex;gap:8px"><input class="search" id="productSearch" placeholder="ابحث عن منتج..."><button class="btn gold" onclick="openProduct()">+ إضافة منتج</button></div></div><div id="productsList"></div></div>
+ </section>
+ <section id="categories" class="view"><div class="card"><div class="toolbar"><div><h2 class="section-title">التصنيفات</h2><div class="sub">تنظيم كتالوج المتجر</div></div><button class="btn gold" onclick="addCat()">+ تصنيف جديد</button></div><div id="catsList"></div></div></section>
+ <section id="orders" class="view"><div class="card"><div class="toolbar"><div><h2 class="section-title">الطلبات</h2><div class="sub">تحديث حالة الطلب ينعكس في بيانات المتجر التجريبية</div></div><input class="search" id="orderSearch" placeholder="رقم الطلب أو اسم العميل..."></div><div id="ordersList"></div></div></section>
+ <section id="customers" class="view"><div class="card"><div class="toolbar"><div><h2 class="section-title">العملاء</h2><div class="sub">بيانات مختصرة للإدارة</div></div></div><div id="customersList"></div></div></section>
+ <section id="payments" class="view"><div class="card"><div class="toolbar"><div><h2 class="section-title">الدفع والتحصيل</h2><div class="sub">أرقام الحسابات التي تظهر عند الدفع</div></div><button class="btn gold" onclick="savePayments()">حفظ التغييرات</button></div><div class="formgrid">
+  <div class="field"><label>MTN CASH</label><input id="mtn"></div><div class="field"><label>SYRIATEL CASH</label><input id="syr"></div>
+  <div class="field"><label>SHAM CASH</label><input id="sham"></div><div class="field"><label>حالة الدفع الإلكتروني</label><select id="payEnabled"><option value="1">مفعّل</option><option value="0">معطّل</option></select></div>
+ </div></div></section>
+ <section id="settings" class="view"><div class="card"><div class="toolbar"><div><h2 class="section-title">إعدادات المتجر</h2><div class="sub">العملة والشحن ورسالة المتجر</div></div><button class="btn gold" onclick="saveSettings()">حفظ الإعدادات</button></div><div class="formgrid">
+  <div class="field"><label>العملة الأساسية</label><input value="الليرة السورية الجديدة (ل.س)" disabled></div><div class="field"><label>1 USD = ل.س جديدة (اختياري)</label><input id="rate" type="number" step=".01"></div><div class="field"><label>الشحن الافتراضي — ل.س جديدة</label><input id="shipping" type="number" step="1"></div>
+  <div class="field full"><label>رسالة المتجر</label><textarea id="message"></textarea></div>
+ </div></div></section>
+</main>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox">
+ <div class="head"><div><h3 id="modalTitle">إضافة منتج</h3><p>أدخل تفاصيل المنتج بدقة</p></div><button class="close" onclick="closeModal()">×</button></div>
+ <input type="hidden" id="pid"><div class="formgrid">
+  <div class="field"><label>اسم المنتج بالعربي</label><input id="pname"></div><div class="field"><label>English Name</label><input id="pen"></div>
+  <div class="field full"><label>الوصف</label><textarea id="pdesc"></textarea></div>
+  <div class="field"><label>السعر — الليرة السورية الجديدة (ل.س)</label><input id="pprice" type="number" step="1"></div><div class="field"><label>المخزون</label><input id="pstock" type="number"></div>
+  <div class="field"><label>التصنيف</label><select id="pcat"></select></div><div class="field"><label>المقاس</label><input id="psize"></div>
+  <div class="field full"><label>صورة المنتج من المعرض</label><div class="upload-box"><input id="pfile" type="file" accept="image/*"><div class="upload-hint"><b>📷 اختيار صورة من المعرض</b><span>JPG / PNG / WEBP</span></div></div><input id="pimage" type="hidden"><div id="imagePreview" class="image-preview"></div></div><div class="field"><label>شارة المنتج</label><select id="pflag"><option value="">عادي</option><option>New Arrival</option><option>Best Seller</option></select></div>
+  <div class="field full"><button class="btn gold" style="width:100%;padding:14px" onclick="saveProduct()">حفظ المنتج</button></div>
+ </div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>window.SCC_CONFIG={SUPABASE_URL:'https://jfpqdnibrtgrlyjkbcgu.supabase.co',SUPABASE_ANON_KEY:'sb_publishable_eureq5HXw8uKQX7dQWrFIQ_GoBmcahe'};</script>
+<script>
+window.SCC_PUSH_STATE=async function(data){if(!window.SCC_SUPABASE)return; try{const {data:u}=await SCC_SUPABASE.auth.getUser(); const uid=u?.user?.id; let ok=false; if(uid){const r=await SCC_SUPABASE.from('admin_users').select('user_id').eq('user_id',uid).maybeSingle(); ok=!!r.data;} if(ok){await SCC_SUPABASE.from('store_state').upsert({id:1,data:data,updated_at:new Date().toISOString()});}}catch(e){console.warn('Supabase sync failed',e);}};
+window.SCC_HYDRATE_STATE=async function(){if(!window.SCC_SUPABASE)return; if(window.SCC_ADMIN_DIRTY)return; try{const r=await SCC_SUPABASE.from('store_state').select('data').eq('id',1).maybeSingle(); if(r.data?.data && !window.SCC_ADMIN_DIRTY){localStorage.setItem('SCC_SHARED_DB',JSON.stringify(r.data.data)); if(typeof db!=='undefined') db=r.data.data; if(typeof render==='function') render();}}catch(e){console.warn('Supabase load failed',e);}};
+</script>
+<script>
+(function(){
+  const C=window.SCC_CONFIG||{};
+  if(!C.SUPABASE_URL||C.SUPABASE_URL.includes('YOUR_PROJECT')||!C.SUPABASE_ANON_KEY||C.SUPABASE_ANON_KEY.includes('YOUR_SUPABASE')){
+    window.SCC_SUPABASE=null; return;
+  }
+  window.SCC_SUPABASE=supabase.createClient(C.SUPABASE_URL,C.SUPABASE_ANON_KEY);
+})();
+</script>
+<script>
+const K='SCC_SHARED_DB';
+const seed={currency:{code:'SYP_NEW',name:'الليرة السورية الجديدة',symbol:'ل.س',usd_rate:122.00},rate:122.00,shipping_syp:300,me
